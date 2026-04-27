@@ -1,1 +1,2 @@
 # Tripleten web_project_around_es
+En este proyecto se inicia con la implementación de javaScript para darle funcionalidad a los botones con los que cuenta la pagina, se añaden funciones que se disparan por medio de listeners y que sea dinamica. Se identifican los elementos HTML por medio de querySelector y se usan en la lógica del js.
