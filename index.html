@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
           ></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
+          <!-- <ul class="cards__list">
             <li class="card">
               <img
                 class="card__image"
@@ -156,7 +156,19 @@
                 ></button>
               </div>
             </li>
-          </ul>
+          </ul> -->
+            <ul class="cards__list">
+              <template id="card-template">
+                <li class="card">
+                  <img src="" alt="" class="card__image" />
+                  <button class="card__delete-button" type="button"></button>
+                  <div class="card__description">
+                    <h2 class="card__title"></h2>
+                    <button class="card__like-button" type="button"></button>
+                  </div>
+                </li>
+              </template>
+            </ul>
         </section>
       </main>
       <footer class="footer page__section">
