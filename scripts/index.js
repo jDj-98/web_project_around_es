@@ -50,9 +50,9 @@ const closeAddSectionButton = addModal.querySelector(".popup__close");
 console.log(closeAddSectionButton);
 const popupCloseButton = imageModal.querySelector(".popup__close");
 console.log(popupCloseButton);
-const editSubmitButton = editModal.querySelector(".popup__edit_button");
+const editSubmitButton = editModal.querySelector(".popup__button_edit");
 console.log(editSubmitButton);
-const cardSubmitButton = addModal.querySelector(".popup__add_button");
+const cardSubmitButton = addModal.querySelector(".popup__button_add");
 console.log(cardSubmitButton);
 //Forms
 const editForm = editModal.querySelector("#edit-profile-form");

@@ -1,9 +1,9 @@
-.popup__edit_button:disabled {
+.popup__button_edit:disabled {
   background: gray;
   color: white;
   cursor: not-allowed;
 }
-.popup__add_button:disabled {
+.popup__button_add:disabled {
   background: gray;
   color: white;
   cursor: not-allowed;
