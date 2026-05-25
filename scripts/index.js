@@ -200,16 +200,16 @@ function handleImageClick(name, link) {
 //en tiempo real cada input del formulario
 //Funcion que muestra el mensaje de error debajo del input correspondiente, y agrega la clase de error al input.
 function showInputError(element, errorMessage, form){
-  const errorElement = form.querySelector(`.${element.id}-input-error`);
-  element.classList.add("form__input_type_error");
+  const errorElement = form.querySelector(`.popup__input-error_type_${element.id}`);
+  element.classList.add("popup__input_type_error");
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("form__input-error_active");
+  errorElement.classList.add("popup__input-error_active");
 }
 //Funcion que oculta el mensaje de error debajo del input correspondiente, y quita la clase de error al input.
 function hideInputError(element, form){
-  const errorElement = form.querySelector(`.${element.id}-input-error`);
-  element.classList.remove("form__input_type_error");
-  errorElement.classList.remove("form__input-error_active");
+  const errorElement = form.querySelector(`.popup__input-error_type_${element.id}`);
+  element.classList.remove("popup__input_type_error");
+  errorElement.classList.remove("popup__input-error_active");
   errorElement.textContent = "";
 }
 //Funcion que activa o desactiva el botón submitt en los formularios
@@ -226,7 +226,6 @@ function resetFormErrors(inputs, form, button) {
 }
 //forEach que valida en tiempo real el input del popup de edición.
 editInputs.forEach(input => {
-  resetFormErrors(editInputs, editForm, editSubmitButton);
   input.addEventListener("input", () => {
     if (!input.validity.valid) {
       showInputError(input, input.validationMessage, editForm);
