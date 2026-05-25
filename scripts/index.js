@@ -24,11 +24,10 @@ let initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
-
+//Carga las cartas iniciales en la consola:
 initialCards.forEach(function (card) {
   console.log(card);
 });
-
 //Definición de variables
 //Modales:
 const editModal = document.querySelector("#edit-popup");
@@ -37,6 +36,9 @@ const addModal = document.querySelector("#new-card-popup");
 console.log(addModal);
 const imageModal = document.querySelector("#image-popup");
 console.log(imageModal);
+//Todos los popups
+const popups = document.querySelectorAll(".popup");
+console.log(popups);
 //Buttons
 const editButton = document.querySelector(".profile__edit-button");
 console.log(editButton);
@@ -48,11 +50,20 @@ const closeAddSectionButton = addModal.querySelector(".popup__close");
 console.log(closeAddSectionButton);
 const popupCloseButton = imageModal.querySelector(".popup__close");
 console.log(popupCloseButton);
+const editSubmitButton = editModal.querySelector(".popup__edit_button");
+console.log(editSubmitButton);
+const cardSubmitButton = addModal.querySelector(".popup__add_button");
+console.log(cardSubmitButton);
 //Forms
 const editForm = editModal.querySelector("#edit-profile-form");
 console.log(editForm);
 const cardForm = addModal.querySelector("#new-card-form");
 console.log(cardForm);
+//Form inputs
+const editInputs = editForm.querySelectorAll(".popup__input");
+console.log(editInputs);
+const cardInputs = cardForm.querySelectorAll(".popup__input");
+console.log(cardInputs);
 //Other elements
 const cardsSection = document.querySelector(".cards__list");
 console.log(cardsSection);
@@ -75,9 +86,11 @@ function closeModal(modal) {
 
 function handleOpenEditModal() {
   fillProfileForm();
+  resetFormErrors(editInputs, editForm, editSubmitButton);
   openModal(editModal);
 }
-
+//Función que llena el formulario de edición del perfil con los datos actuales del perfil, 
+//se llama dentro de la función handleOpenEditModal para que se ejecute cada vez que se abre el popup de edición.
 function fillProfileForm() {
   const profileName = document.querySelector(".profile__title");
   const profileDescription = document.querySelector(".profile__description");
@@ -93,7 +106,8 @@ function fillProfileForm() {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
 }
-
+//Función que maneja el submit del formulario de edición del perfil, 
+//actualiza el nombre y la descripción del perfil con los valores ingresados en el formulario, y luego cierra el modal de edición.
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
@@ -112,7 +126,8 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = descriptionValue;
   closeModal(editModal);
 }
-
+//Función que maneja el submit del formulario de nueva tarjeta, crea una nueva tarjeta con los valores ingresados en el formulario, 
+//la agrega a la sección de tarjetas, y luego cierra el modal de nueva tarjeta.
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
 
@@ -124,12 +139,14 @@ function handleCardFormSubmit(evt) {
   renderCard(titleValue, linkValue, cardsSection);
   closeModal(addModal);
 }
-
+//Función que renderiza una tarjeta, recibe el nombre, el link y el contenedor donde se va a agregar la tarjeta,
+//crea una nueva tarjeta con los valores recibidos, y la agrega al principio del contenedor.
 function renderCard(name, link, container) {
   const newCard = getCardElement(name, link);
   container.prepend(newCard);
 }
-
+//Función que crea una tarjeta, recibe el nombre y el link, clona la plantilla de tarjeta, llena la tarjeta con los valores recibidos,
+//agrega los event listeners para el botón de like, el botón de delete y la imagen, y devuelve la tarjeta creada.
 function getCardElement(name, link) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.cloneNode(true);
@@ -165,12 +182,12 @@ function getCardElement(name, link) {
 
   return cardElement;
 }
-
+//Función que maneja el evento de click en el botón de delete de una tarjeta, elimina la tarjeta correspondiente del DOM.
 function handleCardDelete(evt) {
   const cardToDelete = evt.target.closest(".card");
   cardToDelete.remove();
 }
-
+//Funcion que maneja el evento de click en la imagen de una tarjeta, abre el modal de imagen con la imagen y el título correspondientes a la tarjeta clickeada.
 function handleImageClick(name, link) {
     console.log(name + " nombre en handleImageClick");
     console.log(link + " link en handleImageClick");  
@@ -179,6 +196,57 @@ function handleImageClick(name, link) {
   popupImage.alt = name;
   openModal(imageModal);
 }
+//Funciones para validar el formulario de edición del perfil, también se define un forEach para validar
+//en tiempo real cada input del formulario
+//Funcion que muestra el mensaje de error debajo del input correspondiente, y agrega la clase de error al input.
+function showInputError(element, errorMessage, form){
+  const errorElement = form.querySelector(`.${element.id}-input-error`);
+  element.classList.add("form__input_type_error");
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add("form__input-error_active");
+}
+//Funcion que oculta el mensaje de error debajo del input correspondiente, y quita la clase de error al input.
+function hideInputError(element, form){
+  const errorElement = form.querySelector(`.${element.id}-input-error`);
+  element.classList.remove("form__input_type_error");
+  errorElement.classList.remove("form__input-error_active");
+  errorElement.textContent = "";
+}
+//Funcion que activa o desactiva el botón submitt en los formularios
+function toggleButtonState(inputs, button) {
+  const allValid = Array.from(inputs).every(input => input.validity.valid);
+  button.disabled = !allValid;
+}
+//Función que resetea los mensajes de error al abrir un popup
+function resetFormErrors(inputs, form, button) {
+  inputs.forEach(input => {
+    hideInputError(input, form);
+  });
+  toggleButtonState(inputs, button);
+}
+//forEach que valida en tiempo real el input del popup de edición.
+editInputs.forEach(input => {
+  resetFormErrors(editInputs, editForm, editSubmitButton);
+  input.addEventListener("input", () => {
+    if (!input.validity.valid) {
+      showInputError(input, input.validationMessage, editForm);
+    } else {
+      hideInputError(input, editForm);
+    }
+    toggleButtonState(editInputs, editSubmitButton);
+  });
+});
+//forEach que valida en tiempo real el input del popup de nueva tarjeta.
+cardInputs.forEach(input => {
+  input.addEventListener("input", () => {
+    if (!input.validity.valid) {
+      showInputError(input, input.validationMessage, cardForm);
+    } else {
+      hideInputError(input, cardForm);
+    }
+    toggleButtonState(cardInputs, cardSubmitButton);
+  });
+});
 //Detectores de eventos
 editButton.addEventListener("click", function (modal) {
   handleOpenEditModal();
@@ -189,6 +257,7 @@ closeEditSectionButton.addEventListener("click", function (modal) {
 });
 
 addButton.addEventListener("click", function (modal) {
+  resetFormErrors(cardInputs, cardForm, cardSubmitButton);
   openModal(addModal);
 });
 
@@ -206,4 +275,21 @@ cardForm.addEventListener("submit", function (evt) {
 //Render de las cartas
 initialCards.forEach((card) => {
   renderCard(card.name, card.link, cardsSection);
+});
+//Recorrer los popups para agregar un event listener que cierre el popup en cuestión al hacer click fuera del contenido del mismo
+popups.forEach((popup) => {
+  popup.addEventListener("click", evt => {
+    if (evt.target === popup) {
+      closeModal(popup);
+    }
+  });
+});
+//Valida si un modal está abierto para cerrar con la tecla esc
+document.addEventListener("keydown", evt => {
+  if(evt.key === "Escape"){
+    const openPopup = document.querySelector(".popup_is-opened");
+    if(openPopup){
+      closeModal(openPopup);
+    }
+  }
 });
