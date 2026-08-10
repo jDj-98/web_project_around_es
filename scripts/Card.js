@@ -1,12 +1,10 @@
 import { openModal, closeModal } from "./Utils.js";
 class Card {
-  constructor(name, imgLink, cardSelector, popupCaption, popupImage, imageModal) {
+  constructor(name, imgLink, cardSelector, handleCardClick) {
     this._name = name;
     this._imgLink = imgLink;
     this._cardSelector = cardSelector;
-    this._popupCaption = popupCaption;
-    this._popupImage = popupImage;
-    this._imageModal = imageModal;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -22,11 +20,8 @@ class Card {
     cardToDelete.remove();
   }
 
-  _handleImageButton(name, imgLink) {
-    this._popupCaption.textContent = this._name;
-    this._popupImage.src = this._imgLink;
-    this._popupImage.alt = this._name;
-    openModal(this._imageModal);
+  _handleImageButton() {
+    this._handleCardClick(this._name, this._imgLink);
   }
 
   _setEventListeners() {

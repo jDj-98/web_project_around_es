@@ -3,4 +3,7 @@ En este proyecto se inicia con la implementación de javaScript para darle funci
 
 Como segundo feature se implementan validaciones en los formularios para evitar que el usuario envie información innecesaria o erronea acorde a cada campo con los que cuenta el formulario. También se mejora la experiencia de usuario permitiendo que este cuente con más opciones para interactuar con la página por medio de eventos como el click fuera del modal que se abre, o usando la tecla escape. Se bloquean los botones de submit de cada form, haciendo que el envio de información sea coherente con lo que requiere la página.
 
+Como tercer feature para este proyecto, se aplica el principio o paradigma de la programación orientada a objetos para dividir responsabilidades entre las clases Card.js y FormValidator.js, en donde cada una se responsabiliza de realizar sus respectivas acciones por medio de métodos públicos y privados.
+
 https://jdj-98.github.io/web_project_around_es/
+
