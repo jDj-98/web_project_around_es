@@ -1,4 +1,4 @@
-import { openModal, closeModal } from "./Utils.js";
+import { openModal, closeModal } from "../utils/utils.js";
 class FormValidator {
   constructor(selectors, form) {
     this._selectors = selectors;
@@ -25,7 +25,11 @@ class FormValidator {
       });
       this._selectors.customButton.addEventListener("click", (evt) => {
         evt.preventDefault();
-        this._resetFormErrors(this._selectors.inputs, this._form, this._selectors.submitButton);
+        this._resetFormErrors(
+          this._selectors.inputs,
+          this._form,
+          this._selectors.submitButton,
+        );
       });
     });
   }
@@ -62,6 +66,11 @@ class FormValidator {
       this._hideInputError(input, form);
     });
     this._toggleButtonState(inputs, button);
+  }
+
+  // Public wrapper to reset form errors from outside
+  resetFormErrors(inputs, form, button) {
+    this._resetFormErrors(inputs, form, button);
   }
 }
 export default FormValidator;

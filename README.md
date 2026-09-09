@@ -5,5 +5,7 @@ Como segundo feature se implementan validaciones en los formularios para evitar 
 
 Como tercer feature para este proyecto, se aplica el principio o paradigma de la programación orientada a objetos para dividir responsabilidades entre las clases Card.js y FormValidator.js, en donde cada una se responsabiliza de realizar sus respectivas acciones por medio de métodos públicos y privados.
 
-https://jdj-98.github.io/web_project_around_es/
+Llegando al cuarto feature de este proyecto, se amplia el uso de la POO para que las partes del proyecto se modelen mediante clases adicionales: `Popup`, `PopupWithForm`, `PopupWithImage`, `Section`, `UserInfo`, además de `Card` y `FormValidator`. Estas clases se añadieron para separar responsabilidades (gestión de modales y formularios, representación y renderizado de tarjetas, validación y manejo de datos del usuario), mejorar la mantenibilidad, facilitar reutilización y permitir un flujo de datos más claro entre componentes.
 
+https://jdj-98.github.io/web_project_around_es/
+    

@@ -1,6 +1,6 @@
-import { openModal, closeModal } from "./Utils.js";
+import { openModal, closeModal } from "../utils/utils.js";
 class Card {
-  constructor(name, imgLink, cardSelector, handleCardClick) {
+  constructor( name, imgLink , cardSelector, handleCardClick) {
     this._name = name;
     this._imgLink = imgLink;
     this._cardSelector = cardSelector;
