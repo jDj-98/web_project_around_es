@@ -15,17 +15,11 @@ import {
   cardSubmitButton,
   editForm,
   cardForm,
-  cardsSection,
   profileName,
   profileJob,
-  popups,
   imagePopup,
   linkValue,
   titleValue,
-  titleInputSelector,
-  linkInputSelector,
-  popupCaption,
-  popupImage,
   nameInputSelector,
   jobInputSelector,
   editPopup,
@@ -47,7 +41,7 @@ const editFormPopupObject = new PopupWithForm(editPopup, (formValues) => {
 });
 const cardFormPopupObject = new PopupWithForm(addPopup, (formValues) => {
   const cardData = {
-    name: formValues.name,
+    name: formValues["place-name"],
     link: formValues.link,
   };
   const newCardElement = createCard(cardData);

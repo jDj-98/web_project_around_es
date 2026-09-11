@@ -24,8 +24,8 @@ export const cardsSection = document.querySelector(".cards__list");
 //popup image elements
 export const popupImage = imagePopup.querySelector(".popup__image");
 export const popupCaption = imagePopup.querySelector(".popup__caption");
-export const profileName = document.querySelector(".profile__name");
-export const profileJob = document.querySelector(".profile__job");
+export const profileName = document.querySelector(".profile__title");
+export const profileJob = document.querySelector(".profile__description");
 
 export const titleInputSelector = addPopup.querySelector(
   ".popup__input_type_card-name",

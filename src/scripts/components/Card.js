@@ -1,4 +1,3 @@
-import { openModal, closeModal } from "../utils/utils.js";
 class Card {
   constructor( name, imgLink , cardSelector, handleCardClick) {
     this._name = name;

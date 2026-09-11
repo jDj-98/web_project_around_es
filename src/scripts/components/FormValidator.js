@@ -1,4 +1,4 @@
-import { openModal, closeModal } from "../utils/utils.js";
+
 class FormValidator {
   constructor(selectors, form) {
     this._selectors = selectors;
