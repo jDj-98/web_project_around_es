@@ -78,6 +78,47 @@
   opacity: 0.6;
 }
 
+.profile__avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex: 0 0 120px;
+  margin-right: 29px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.profile__image {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.profile__edit-avatar-button {
+  width: 100%;
+  height: 100%;
+  background: transparent url("../images/edit-icon.svg") center no-repeat;
+  background-size: 15% 15%;
+  border: 1px  #fff;
+  grid-area: button;
+  align-self: center;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.profile__edit-avatar-button {
+  opacity: 0;
+}
+
+.profile__avatar-container:hover .profile__edit-avatar-button {
+  opacity: 1;
+}
+
 @media screen and (max-width: 959px) {
   .profile__info {
     grid-template-columns: auto;

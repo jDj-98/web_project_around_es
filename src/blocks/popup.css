@@ -52,7 +52,7 @@
 .popup__content {
   max-width: 430px;
   width: 100%;
-  min-height: 323px;
+  min-height: 181px;
   background-color: #fff;
   border-radius: 10px;
   position: relative;
@@ -116,6 +116,7 @@
   top: calc(100% + 10px);
   margin: 0;
 }
+
 
 @media screen and (max-width: 544px) {
   .popup {

@@ -3,6 +3,8 @@
 export const editPopup = document.querySelector("#edit-popup");
 export const addPopup = document.querySelector("#new-card-popup");
 export const imagePopup = document.querySelector("#image-popup");
+export const deleteConfirmPopup = document.querySelector("#delete-confirm-popup");
+export const editProfilePicturePopupSelector = document.querySelector("#edit-pic-profile-popup");
 //Todos los popups
 export const popups = document.querySelectorAll(".popup");
 //Buttons
@@ -13,6 +15,8 @@ export const closeAddSectionButton = addPopup.querySelector(".popup__close");
 export const popupCloseButton = imagePopup.querySelector(".popup__close");
 export const editSubmitButton = editPopup.querySelector(".popup__button_edit");
 export const cardSubmitButton = addPopup.querySelector(".popup__button_add");
+export const deleteCardPopupButton = deleteConfirmPopup.querySelector(".popup__button_delete");
+export const editProfilePictureButton = document.querySelector(".profile__edit-avatar-button");
 //Forms
 export const editForm = editPopup.querySelector("#edit-profile-form");
 export const cardForm = addPopup.querySelector("#new-card-form");
@@ -43,30 +47,3 @@ export const nameInputSelector = editPopup.querySelector(
 export const jobInputSelector = editPopup.querySelector(
   ".popup__input_type_description",
 );
-
-export let initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-  },
-  {
-    name: "LatemarLatemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-  },
-];

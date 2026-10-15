@@ -8,3 +8,8 @@
   color: white;
   cursor: not-allowed;
 }
+.popup__button_delete:disabled {
+  background: gray;
+  color: white;
+  cursor: not-allowed;
+}

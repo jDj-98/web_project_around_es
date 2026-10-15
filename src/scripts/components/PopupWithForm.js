@@ -17,13 +17,31 @@ class PopupWithForm extends Popup {
     return formValues;
   }
 
+  setSubmitButtonText(text) {
+    const submitButton = this._popUpSelector.querySelector(".popup__button");
+    if (submitButton) {
+      submitButton.textContent = text;
+    }
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
     this._popUpSelector.addEventListener("submit", (evt) => {
       evt.preventDefault();
       const values = this._getInputValues();
-      this._submitForm(values);
+      const submitButton = this._popUpSelector.querySelector(".popup__button");
+      const originalButtonText = submitButton?.textContent.trim() ?? "";
+
+      this.setSubmitButtonText("Guardando...");
+      Promise.resolve()
+        .then(() => this._submitForm(values))
+        .catch((error) => {
+          console.error("Error al enviar el formulario:", error);
+        })
+        .finally(() => {
+          this.setSubmitButtonText(originalButtonText);
+        });
     });
 
     const closeBtn = this._popUpSelector.querySelector(".popup__close");
@@ -35,7 +53,6 @@ class PopupWithForm extends Popup {
   }
 
   close() {
-    // Reset only the <form> inside the popup (if present), then close
     const form = this._popUpSelector.querySelector("form");
     if (form) form.reset();
     super.close();

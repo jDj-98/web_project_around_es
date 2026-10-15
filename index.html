@@ -18,11 +18,18 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
+          <div class ="profile__avatar-container">
+            <img
             class="profile__image"
             src="src/images/avatar.jpg"
             alt="Avatar"
           />
+          <button
+            aria-label="Editar avatar"
+            class="profile__edit-avatar-button"
+            type="button"
+          ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -155,6 +162,50 @@
           <p class="popup__caption"></p>
         </div>
       </div>
+      <div class="popup" id="delete-confirm-popup">
+        <div class="popup__content">
+          <button
+            aria-label="Cerrar ventana emergente"
+            class="popup__close"
+            type="button"
+          ></button>
+          <h3 class="popup__title">¿Estás seguro/a?</h3>
+          <button
+            class="button popup__button popup__button_delete"
+            type="submit"
+          >
+            Sí
+          </button>
+        </div>
+      </div>
+      <div class="popup" id="edit-pic-profile-popup">
+        <div class="popup__content">
+          <button
+            aria-label="Cerrar ventana emergente"
+            class="popup__close"
+            type="button"
+          ></button>
+          <h3 class="popup__title">Editar avatar</h3>
+          <form class="popup__form" id="edit-pic-profile-form" novalidate>
+            <input
+              class="popup__input popup__input_type_url"
+              name="avatar-url"
+              id="avatar-url"
+              placeholder="Enlace a la imagen"
+              required
+              type="url"
+            />
+            <span
+              class="popup__input-error popup__input-error_type_avatar-link"
+            ></span>
+            <button
+              class="button popup__button popup__button_edit-pic-profile"
+              type="submit"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
     </div>
     <script type="module" src="src/scripts/index.js"></script>
   </body>
