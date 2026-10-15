@@ -74,7 +74,7 @@ class Card {
     const cardImage = this._cardElement.querySelector(".card__image");
 
     cardTitle.textContent = this._name || "Sin título";
-    cardImage.src = this._imgLink || "../images/placeholder.jpg";
+    cardImage.src = this._imgLink || "images/placeholder.jpg";
     cardImage.alt = this._name || "Sin título";
 
     return this._cardElement;
