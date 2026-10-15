@@ -7,5 +7,7 @@ Como tercer feature para este proyecto, se aplica el principio o paradigma de la
 
 Llegando al cuarto feature de este proyecto, se amplia el uso de la POO para que las partes del proyecto se modelen mediante clases adicionales: `Popup`, `PopupWithForm`, `PopupWithImage`, `Section`, `UserInfo`, además de `Card` y `FormValidator`. Estas clases se añadieron para separar responsabilidades (gestión de modales y formularios, representación y renderizado de tarjetas, validación y manejo de datos del usuario), mejorar la mantenibilidad, facilitar reutilización y permitir un flujo de datos más claro entre componentes.
 
+Para el quinto feature del proyecto, se integra el uso de programación asíncrona y consumo de APIs por medio de promesas para realizar el guardado, actualización y eliminación de los elementos de la pagina por medio de las solicitudes GET, PUT, PATCH, DELETE.
+
 https://jdj-98.github.io/web_project_around_es/
     
