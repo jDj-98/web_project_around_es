@@ -9,5 +9,5 @@ Llegando al cuarto feature de este proyecto, se amplia el uso de la POO para que
 
 Para el quinto feature del proyecto, se integra el uso de programación asíncrona y consumo de APIs por medio de promesas para realizar el guardado, actualización y eliminación de los elementos de la pagina por medio de las solicitudes GET, PUT, PATCH, DELETE.
 
-https://jdj-98.github.io/web_project_around_es/
+https://jdj-98.github.io/web_project_around_es/src
     

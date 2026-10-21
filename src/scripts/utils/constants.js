@@ -23,6 +23,7 @@ export const cardForm = addPopup.querySelector("#new-card-form");
 //Form inputs
 export const editInputs = editForm.querySelectorAll(".popup__input");
 export const cardInputs = cardForm.querySelectorAll(".popup__input");
+export const editProfilePictureInputs = editProfilePicturePopupSelector.querySelectorAll(".popup__input");
 //Other elements
 export const cardsSection = document.querySelector(".cards__list");
 //popup image elements

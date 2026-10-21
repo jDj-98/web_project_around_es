@@ -45,9 +45,13 @@ class Card {
     this._cardLikeButton.addEventListener("click", (evt) =>
       this._handleLikeButton(evt),
     );
-    this._cardDeleteButton.addEventListener("click", (evt) =>
-      this._handleDeleteButton(evt),
-    );
+    if (this._handleDeleteClick) {
+      this._cardDeleteButton.addEventListener("click", (evt) =>
+        this._handleDeleteButton(evt),
+      );
+    } else {
+      this._cardDeleteButton.remove();
+    }
     this._cardImageButton.addEventListener("click", () =>
       this._handleImageButton(),
     );

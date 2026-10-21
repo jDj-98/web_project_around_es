@@ -13,3 +13,8 @@
   color: white;
   cursor: not-allowed;
 }
+.popup__button_edit-pic-profile:disabled {
+  background: gray;
+  color: white;
+  cursor: not-allowed;
+}

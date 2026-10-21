@@ -17,7 +17,7 @@ class Api {
   }
 
   getApiUserInfo() {
-    return fetch(this._baseUrl, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         authorization: this._config.authorization,
       },
@@ -35,7 +35,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(this._baseUrl, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
         authorization: this._config.authorization,
       },
@@ -54,7 +54,7 @@ class Api {
 
   updateUserInfo(userData) {
     {
-      return fetch(this._baseUrl, {
+      return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
         headers: {
           authorization: this._config.authorization,
@@ -79,7 +79,7 @@ class Api {
   }
 
   addNewCard(cardData) {
-    return fetch(this._baseUrl, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
         authorization: this._config.authorization,
@@ -103,7 +103,7 @@ class Api {
   }
 
   likeCard(cardId) {
-    return fetch(`${this._baseUrl}/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: {
         authorization: this._config.authorization,
@@ -117,7 +117,7 @@ class Api {
   }
 
   dislikeCard(cardId) {
-    return fetch(`${this._baseUrl}/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {
         authorization: this._config.authorization,
@@ -131,7 +131,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         authorization: this._config.authorization,
@@ -145,7 +145,7 @@ class Api {
   }
 
   updateProfilePicture(avatarUrl) {
-    return fetch(this._baseUrl, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: this._config.authorization,
