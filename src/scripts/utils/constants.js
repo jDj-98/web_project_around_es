@@ -15,7 +15,6 @@ export const closeAddSectionButton = addPopup.querySelector(".popup__close");
 export const popupCloseButton = imagePopup.querySelector(".popup__close");
 export const editSubmitButton = editPopup.querySelector(".popup__button_edit");
 export const cardSubmitButton = addPopup.querySelector(".popup__button_add");
-export const deleteCardPopupButton = deleteConfirmPopup.querySelector(".popup__button_delete");
 export const editProfilePictureButton = document.querySelector(".profile__edit-avatar-button");
 //Forms
 export const editForm = editPopup.querySelector("#edit-profile-form");

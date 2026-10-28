@@ -2,7 +2,7 @@
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts/components/Section.js";
-import Popup from "../scripts/components/Popup.js";
+import PopupWithConfirmation from "../scripts/components/PopupWithConfirmation.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import UserInfo from "../scripts/components/UserInfo.js";
@@ -28,7 +28,6 @@ import {
   editProfilePicturePopupSelector,
   editProfilePictureButton,
   deleteConfirmPopup,
-  deleteCardPopupButton,
   editProfilePictureInputs,
 } from "../scripts/utils/constants.js";
 //Empezamos definiendo los objetos de las clases que se requeriran para la construcción de las secciones
@@ -73,7 +72,26 @@ const cardFormPopupObject = new PopupWithForm(addPopup, (formValues) => {
     cardFormPopupObject.close();
   });
 });
-const confirmDeleteCardPopup = new Popup(deleteConfirmPopup);
+
+let pendingCardToDelete = null;
+const confirmDeleteCardPopup = new PopupWithConfirmation(
+  deleteConfirmPopup,
+  () => {
+    if (!pendingCardToDelete) return;
+
+    const cardToDelete = pendingCardToDelete;
+    return api
+      .deleteCard(cardToDelete.id)
+      .then(() => {
+        cardToDelete.element.remove();
+        pendingCardToDelete = null;
+        confirmDeleteCardPopup.close();
+      })
+      .catch((err) => {
+        console.error(`Error al eliminar la tarjeta: ${err}`);
+      });
+  },
+);
 
 const editProfilePicturePopup = new PopupWithForm(
   editProfilePicturePopupSelector,
@@ -101,24 +119,7 @@ cardFormPopupObject.setEventListeners();
 
 //Luego, definimos la funcion que renderizará las tarjetas
 //Función que renderiza una tarjeta usando la clase Card.
-let pendingCardToDelete = null;
 let currentUserId = null;
-
-deleteCardPopupButton.addEventListener("click", () => {
-  if (!pendingCardToDelete) return;
-
-  const cardToDelete = pendingCardToDelete;
-  api
-    .deleteCard(cardToDelete.id)
-    .then(() => {
-      cardToDelete.element.remove();
-      pendingCardToDelete = null;
-      confirmDeleteCardPopup.close();
-    })
-    .catch((err) => {
-      console.error(`Error al eliminar la tarjeta: ${err}`);
-    });
-});
 
 const createCard = (cardData) => {
   const cardOwnerId =

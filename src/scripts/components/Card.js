@@ -28,7 +28,8 @@ class Card {
     const isLikedNow = !this._isLiked;
 
     this._handleLikeClick(isLikedNow, this._id).then(() => {
-      likeButton.classList.toggle("card__like-button_is-active");
+      this._isLiked = isLikedNow;
+      likeButton.classList.toggle("card__like-button_is-active", this._isLiked);
     });
   }
 
